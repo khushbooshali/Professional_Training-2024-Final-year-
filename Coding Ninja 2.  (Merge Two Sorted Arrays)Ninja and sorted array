@@ -1,0 +1,15 @@
+#include <algorithm>
+
+vector<int> ninjaAndSortedArrays(vector<int>& arr1, vector<int>& arr2, int m, int n) {
+	vector<int> ob3(m + n);
+	for(int i : arr2)
+	{
+		arr1.push_back(i);
+	}
+	
+	sort(arr1.begin(), arr1.end());
+	while(arr1[0]==0){
+		arr1.erase(arr1.begin());
+	}
+    return arr1;
+}
