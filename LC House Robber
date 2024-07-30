@@ -1,0 +1,9 @@
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int prev1=0, prev2=0;
+        for (int i : nums) 
+        prev1 = max(prev1, exchange(prev2,prev1)+i);
+        return prev1;
+    }
+};
