@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n=nums1.size();
+        int k,j;
+        vector<int>result(n,-1);
+        for(int i=0;i<n;i++){
+            for(k=0;k<nums2.size();k++){
+                if(nums1[i]== nums2[k]){
+                    break;
+                }
+            }
+            for(j=k+1;j<nums2.size();j++){
+                if(nums2[j]>nums1[i]){
+                    result[i]=nums2[j];
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+};
