@@ -1,0 +1,34 @@
+#include <bits/stdc++.h> 
+/****************************************************************
+    Following is the Linked List node structure
+
+    class Node {
+    public:
+        int data;
+        Node *next;
+        Node(int data) {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*****************************************************************/
+
+Node *removeNodes(Node *head, int k) {
+   if(head==NULL)
+       return head;
+    while(head != NULL && head->data == k)
+        head=head->next;
+    if(head==NULL)
+     return NULL;
+    Node *temp=head;
+    while(temp->next !=NULL)
+    {
+        if(temp->next->data == k)
+		temp->next=temp->next->next;
+        else
+        temp = temp->next;
+	}
+
+  return head;
+}
