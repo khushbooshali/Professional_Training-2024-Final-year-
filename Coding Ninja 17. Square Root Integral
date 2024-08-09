@@ -1,0 +1,18 @@
+int floorSqrt(int n) {
+    if (n == 0 || n == 1) return n;  // Handle cases for n = 0 or 1
+
+    int low = 1, high = n, ans = 0;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (mid <= n / mid) {
+            ans = mid;  // Store the floor value
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return ans;
+}
