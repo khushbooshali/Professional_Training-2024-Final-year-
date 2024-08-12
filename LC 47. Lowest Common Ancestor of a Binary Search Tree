@@ -1,0 +1,48 @@
+BASE 1 SOLUTION USI G SEARCHING METHOD:-
+SPACE COMPLEXITY AND TIME COMPLEXITY ISSUE ALSO COMES
+(THIS SOLUTION OCCUPIES VERY SPACE AS WELL AS CODE IS VERY LONG.)
+
+class Solution {
+public:
+    void getAncestor(TreeNode* root, TreeNode* node, vector<TreeNode*> &vc) {
+         if(root->val == node->val){
+           vc.push_back(root);
+       }
+       else{
+           if(node->val < root->val)
+                getAncestor(root->left,node,vc);
+            else
+                getAncestor(root->right,node,vc);
+            vc.push_back(root);
+       }
+    }
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*> a1,a2;
+          getAncestor(root, p,a1);
+          getAncestor(root, q,a2);
+          TreeNode* lca;
+          for(TreeNode* t : a2){
+              if(find(a1.begin(),a1.end(),t) !=a1.end()){
+                lca = t;
+                break;
+              }
+          }
+          return lca;
+    }
+};
+
+BASE 2 SOLUTION
+WHICH CAN TAKE LESS TIME AND SPACE COMPLEXITY
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root == NULL)
+            return NULL;
+        else if(p->val < root->val && q->val < root->val)
+            return lowestCommonAncestor(root->left, p,q);
+        else if(p->val > root->val && q->val > root->val)
+            return lowestCommonAncestor(root->right, p,q);
+        return root;
+    }
+};
